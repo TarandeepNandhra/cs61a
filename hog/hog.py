@@ -45,7 +45,13 @@ def free_bacon(score):
 
     # Trim pi to only (score + 1) digit(s)
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
+    pi // 100
+    limit = 99 - score
+    counter = 0
+    while counter <= limit:
+        pi = pi // 10
+        counter += 1
+
     # END PROBLEM 2
 
     return pi % 10 + 3
