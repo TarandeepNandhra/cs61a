@@ -173,6 +173,7 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
         if who == 0:
             num_rolls = strategy0(score0, score1)
             score0 += take_turn(num_rolls, score1, dice)
+            say = say(score0, score1)
             if score0 >= goal:
                 break
             if not extra_turn(score0, score1):
@@ -181,6 +182,7 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
         else:
             num_rolls = strategy1(score1, score0)
             score1 += take_turn(num_rolls, score0, dice)
+            say = say(score0, score1)
             if score1 >= goal:
                 break
             if not extra_turn(score1, score0):
@@ -189,7 +191,9 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     # END PROBLEM 5
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 6
-    "*** YOUR CODE HERE ***"
+
+    # Easier to implement into code above.
+
     # END PROBLEM 6
     return score0, score1
 
