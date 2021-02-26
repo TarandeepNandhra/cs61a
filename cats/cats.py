@@ -97,7 +97,19 @@ def autocorrect(user_word, valid_words, diff_function, limit):
     than LIMIT.
     """
     # BEGIN PROBLEM 5
-    "*** YOUR CODE HERE ***"
+    minimum = 1000
+    min_index = 0
+    for index, word in enumerate(valid_words):
+        check = diff_function(user_word, word, limit)
+        if user_word == word:
+            return word
+        elif minimum > check:
+            minimum = check
+            min_index = index
+    if minimum > limit:
+        return user_word
+    else:
+        return valid_words[min_index]
     # END PROBLEM 5
 
 
