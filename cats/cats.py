@@ -119,7 +119,17 @@ def shifty_shifts(start, goal, limit):
     their lengths.
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    def shifty_helper(start, goal, current):
+        if current > limit:
+            return limit + 1
+        if start == "" or goal == "":
+            return current + len(start) + len(goal)
+        if start[0] != goal[0]:
+            return shifty_helper(start[1:], goal[1:], 1 + current)
+        else:
+            return shifty_helper(start[1:], goal[1:], current)
+            
+    return shifty_helper(start, goal, 0)
     # END PROBLEM 6
 
 
