@@ -16,7 +16,13 @@ def choose(paragraphs, select, k):
     the empty string.
     """
     # BEGIN PROBLEM 1
-    "*** YOUR CODE HERE ***"
+
+    for string in paragraphs:
+        if select(string):
+            if k == 0:
+                return string
+            k -= 1
+    return ''
     # END PROBLEM 1
 
 
