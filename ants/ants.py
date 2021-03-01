@@ -234,7 +234,7 @@ class FireAnt(Ant):
     food_cost = 5
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 5
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem 5
 
     def __init__(self, armor=3):
@@ -249,7 +249,14 @@ class FireAnt(Ant):
         if the fire ant dies.
         """
         # BEGIN Problem 5
-        "*** YOUR CODE HERE ***"
+        current_place = self.place
+        Ant.reduce_armor(self, amount)
+        for bee in list(current_place.bees):
+            bee.reduce_armor(amount)
+        # check if fireant died
+        if self.place is not current_place:
+            for bee in list(current_place.bees):
+                bee.reduce_armor(self.damage)
         # END Problem 5
 
 class HungryAnt(Ant):
