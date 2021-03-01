@@ -163,6 +163,8 @@ class ThrowerAnt(Ant):
     damage = 1
     # ADD/OVERRIDE CLASS ATTRIBUTES HERE
     food_cost = 3
+    min_range = 0
+    max_range = float('inf')
 
     def nearest_bee(self, beehive):
         """Return the nearest Bee in a Place that is not the HIVE (beehive), connected to
@@ -172,13 +174,15 @@ class ThrowerAnt(Ant):
         """
         # BEGIN Problem 3 and 4
         current = self.place
+        range = 0
         # Either reach end of tunnel or a place which contains a bee.
         while True:
-            if current.bees != []:
+            if current.bees != [] and self.min_range <= range <= self.max_range:
                 return rANTdom_else_none(current.bees)
             if current.entrance == beehive:
                 return None
             current = current.entrance
+            range += 1
         # END Problem 3 and 4
 
     def throw_at(self, target):
@@ -207,7 +211,8 @@ class ShortThrower(ThrowerAnt):
     food_cost = 2
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 4
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
+    max_range = 3
     # END Problem 4
 
 class LongThrower(ThrowerAnt):
@@ -217,7 +222,8 @@ class LongThrower(ThrowerAnt):
     food_cost = 2
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 4
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
+    min_range = 5
     # END Problem 4
 
 class FireAnt(Ant):
